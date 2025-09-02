@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Global PREVENT — Calculator</title>
+  <link rel="stylesheet" href="assets/style.css"/>
+</head>
+<body>
+<div class="nav">
+  <div class="row container">
+    <div class="brand"><div class="logo"></div><b>Global PREVENT™</b></div>
+    <div class="menu">
+      <a href="index.html">Home</a> |
+      <a href="calculator.html">Calculator</a> |
+      <a href="methodology.html">Methodology</a> |
+      <a href="examples.html">Examples</a> |
+      <a href="references.html">References</a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="h">Step 1 — Patient inputs (U.S. PREVENT variables)</div>
+    <p class="sub">Enter age, SBP, cholesterol, eGFR, BMI, diabetes, smoking, treatments. 
+    If official PREVENT β and S₀ are loaded (see <code>assets/coeffs_full.js</code>), 
+    η<sub>US</sub> will be computed automatically.</p>
+
+    <div class="grid">
+      <label>Sex<select id="sex"><option value="female">Female</option><option value="male">Male</option></select></label>
+      <label>Outcome<select id="outcome"><option value="CVD">CVD</option><option value="ASCVD">ASCVD</option><option value="HF">HF</option></select></label>
+      <label>Horizon<select id="horizon"><option value="10">10 years</option><option value="30">30 years</option></select></label>
+      <label>Age (years)<input id="age" type="number" value="55"/></label>
+      <label>SBP (mmHg)<input id="sbp" type="number" value="130"/></label>
+      <label>Total Chol (mg/dL)<input id="tc" type="number" value="200"/></label>
+      <label>HDL-C (mg/dL)<input id="hdl" type="number" value="50"/></label>
+      <label>eGFR (mL/min/1.73m²)<input id="egfr" type="number" value="90"/></label>
+      <label>BMI (kg/m²)<input id="bmi" type="number" value="25"/></label>
+      <label>Diabetes<select id="dm"><option value="0">No</option><option value="1">Yes</option></select></label>
+      <label>Smoker<select id="smk"><option value="0">No</option><option value="1">Yes</option></select></label>
+      <label>BP treatment<select id="bptx"><option value="0">No</option><option value="1">Yes</option></select></label>
+      <label>Statin<select id="statin"><option value="0">No</option><option value="1">Yes</option></select></label>
+      <label>HbA1c (%)<input id="hba1c" type="number" step="0.1"/></label>
+      <label>UACR (mg/g)<input id="uacr" type="number" step="0.1"/></label>
+      <label>SDI decile (1–10)<input id="sdi" type="number" min="1" max="10"/></label>
+    </div>
+    <button class="btn" id="btn-compute-lp">Compute η<sub>US</sub></button>
+    <span class="badge" id="coeff-status">COEFFS: not loaded</span>
+    <div class="kv"><span>η<sub>US</sub></span><span id="lp-auto">—</span></div>
+  </div>
+
+  <div class="card">
+    <div class="h">Step 2 — International recalibration</div>
+    <div class="grid">
+      <label>Country<select id="country"></select></label>
+      <label>Age band<select id="ageband"><option>40–49</option><option>50–59</option><option>60–69</option></select></label>
+      <label>Horizon<select id="horizon2"><option value="10">10 years</option><option value="30">30 years</option></select></label>
+      <label>γc<input id="gamma" type="number" step="any" value="1"/></label>
+      <label>μc<input id="mu" type="number" step="any" value="0"/></label>
+      <label>S₀c(τ)<input id="S0" type="number" step="any" value="0.92"/></label>
+      <label>Manual LP (if no β)<input id="lp" type="number" step="any" value="0"/></label>
+    </div>
+    <button class="btn" id="btn-preset">Load country preset</button>
+    <button class="btn alt" onclick="window.print()">Export PDF</button>
+  </div>
+
+  <div class="card">
+    <div class="h">Result</div>
+    <div class="kv"><span>Country</span><span id="out-country">—</span></div>
+    <div class="kv"><span>Sex / Outcome</span><span id="out-so">—</span></div>
+    <div class="kv"><span>Horizon</span><span id="out-hor">—</span></div>
+    <div class="kv"><span>LP used</span><span id="out-lp">—</span></div>
+    <div class="kv"><span>γc</span><span id="out-gamma">—</span></div>
+    <div class="kv"><span>μc</span><span id="out-mu">—</span></div>
+    <div class="kv"><span>S₀c(τ)</span><span id="out-S0">—</span></div>
+    <div class="big" id="out-risk">—</div>
+  </div>
+</div>
+
+<script src="assets/tiers.js"></script>
+<script src="assets/coeffs_full.js"></script>
+<script src="assets/calc_full.js"></script>
+</body></html>

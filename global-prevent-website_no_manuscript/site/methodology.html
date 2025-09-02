@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Global PREVENT™ — Methodology</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  
+<div class="nav">
+  <div class="row container">
+    <div class="brand">
+      <div class="logo"></div>
+      <div class="title">Global PREVENT™</div>
+    </div>
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="calculator.html">Calculator</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="examples.html">Examples</a>
+      <a href="references.html">References</a>
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="card">
+      <div class="h">Methodology</div>
+      <p><b>We do not collect raw U.S. variables</b> (cholesterol, SBP, etc.) in this app. The calculator implements the international correction only:</p>
+      <p><code>P_c(τ) = 1 − [S₀c(τ)]^exp( γc · [η_US − μc] )</code></p>
+      <ul>
+        <li><b>S₀c(10), S₀c(30)</b>: country-specific baseline survival</li>
+        <li><b>μc</b>: mean LP in the local population</li>
+        <li><b>γc</b>: calibration slope from a local Cox model vs η<sub>US</sub></li>
+      </ul>
+      <p>If you already know η<sub>US</sub> for a patient (e.g., exported from PREVENT™), paste it in LP. Otherwise, use presets and adjust.</p>
+    </div>
+  </div>
+  
+<footer class="container">
+  © 2025 Global PREVENT™ prototype — Educational use. Replace demo presets with validated local data.
+</footer>
+
+</body>
+</html>
